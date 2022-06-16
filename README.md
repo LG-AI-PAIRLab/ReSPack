@@ -7,9 +7,9 @@
     <th style="text-align:center; margin:auto;">RSTPP in ReSPack</th>
   </tr>
   <tr>
-    <td><img src="asset/realpcb_sample1.png" width="220" height="220"/></td>
-    <td><img src="asset/realpcb_rstpp_sample1.png" width="220" height="220"/></td>
-    <td><img src="asset/respack_rstpp_sample1.png" width="220" height="220"/></td>
+    <td><img src="asset/realpcb_sample1.jpg" width="220" height="220"/></td>
+    <td><img src="asset/realpcb_rstpp_sample1.jpg" width="220" height="220"/></td>
+    <td><img src="asset/respack_rstpp_sample1.jpg" width="220" height="220"/></td>
   </tr>
 </table>
 
@@ -117,7 +117,7 @@ python ./evaluate.py
 
 
 ## Directory
-
+```
 ReSPack  
 ├── dataset_config: config files for dataset generation  
 │   |── UC  
@@ -140,3 +140,4 @@ ReSPack
 │  
 ├── generate.py: generate dataset  
 └── evaluate.py: evaluate algorithm
+```
