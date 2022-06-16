@@ -74,7 +74,7 @@ Prepare your config file for data genaration.
 Sample config files are provided in `dataset_config` (default root directory). 
 Then, run the following command.
 ```
-python ./generate.py --root [ROOT_DIRECTORY] --name [DATASET_NAME] --n_samples [N_SAMPLES] --n_cores [N_CORES] [--init_base_dir [INIT_BASE_DIR]]
+python generate.py --root [ROOT_DIRECTORY] --name [DATASET_NAME] --n_samples [N_SAMPLES] --n_cores [N_CORES] [--init_base_dir [INIT_BASE_DIR]]
 ```
 
 
@@ -112,7 +112,7 @@ Prepare your config file which contains arguments for evaluating algorithm.
 Sample config files are provided in `configs`. 
 Then, run the following command.
 ```
-python ./evaluate.py
+python evaluate.py
 ```
 
 
