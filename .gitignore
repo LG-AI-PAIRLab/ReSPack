@@ -4,6 +4,7 @@
 *.ipynb
 *.png
 *.txt
+!requirements.txt
 datasets/
 *.profile
 # test_*
