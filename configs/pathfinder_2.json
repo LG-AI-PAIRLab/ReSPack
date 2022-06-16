@@ -1,0 +1,17 @@
+{
+    "data_dir": "respack",
+    "datasets": ["UC_8", "NWA_8", "NWA_LS_WL_8"],
+    "algo": "heuristic",
+    "route": "2approx",
+    "rrr": "pathfinder",
+    "shuffle": "False",
+    "save": "False",
+    "n_samples": 100,
+    "time_limits": 3,
+    "n_roots": 1,
+    "verbose": "False",
+    "n_process": 10,
+    "n_split": 10,
+    "n_seeds": 5
+  }
+  

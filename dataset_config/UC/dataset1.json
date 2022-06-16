@@ -1,0 +1,10 @@
+{
+  "description": "UC",
+  "dim": [2, 16, 16],
+  "method": "2opt",
+  "distribution_ntrees": {"type": "multinomial", "min": 8, "max": 9},
+  "distribution_nterminals": {"type": "poisson", "mu": 2},
+  "r_min": 3,
+  "r_max": 8,
+  "random_seed": 1234567
+}

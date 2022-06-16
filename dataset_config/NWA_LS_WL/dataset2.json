@@ -1,0 +1,12 @@
+{
+  "description": "NWA_LS_WL",
+  "dim": [2, 32, 32],
+  "method": "2opt_obsconst",
+  "distribution_ntrees": {"type": "multinomial", "min": 16, "max": 17},
+  "distribution_nterminals": {"type": "poisson", "mu": 2},
+  "r_min": 3,
+  "r_max": 16,
+  "obstacle": 4,
+  "margin_max": 4,
+  "random_seed": 1234567
+}

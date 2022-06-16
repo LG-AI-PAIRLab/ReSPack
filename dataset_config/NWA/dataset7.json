@@ -1,0 +1,11 @@
+{
+  "description": "NWA",
+  "dim": [2, 1024, 1024],
+  "method": "fast_obs",
+  "distribution_ntrees": {"type": "multinomial", "min": 512, "max": 513},
+  "distribution_nterminals": {"type": "poisson", "mu": 2},
+  "r_min": 3,
+  "r_max": 512,
+  "obstacle": 64,
+  "random_seed": 1234567
+}
