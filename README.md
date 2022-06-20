@@ -91,9 +91,9 @@ class CustomAlgorithm(Algorithm):
         # initialize
     
     def run(self):
-    ST = STEINER_TREES(=[(EDGE_LIST, NODE_LIST), ...]) if Success else None
-    # iteration = Number of iteration if exists else 
-    result = {"solution": ST, "iteration": iteration}
+        ST = STEINER_TREES(=[(EDGE_LIST, NODE_LIST), ...]) if Success else None
+        iteration = Number of iteration if exists else 1
+        result = {"solution": ST, "iteration": iteration}
         return result
 ```
 
