@@ -26,7 +26,7 @@ def get_twopin_list(pinList):
     return twoPinListSorted
 
 def extract_subgraph(solver):
-    ST = []
+    ST = {}
     edge_solutions, order = solver.best_traces, solver.best_solution
     if edge_solutions is None:
         return None
@@ -37,7 +37,7 @@ def extract_subgraph(solver):
             edges.append((i, j))
             nodes.append(i)
             nodes.append(j)
-        ST.append((edges, list(set(nodes))))
+        ST[t] = (edges, list(set(nodes)))
     return ST
 
 

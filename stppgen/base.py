@@ -136,7 +136,7 @@ class GridSTP:
             raise NotImplementedError('it cannot display the graph.')
         z = self.dim[0]
         draw_graph_3d(self.g, x, y, z, save, color=False)
-        draw_graph_3d_ver2(self.g, x, y, z, save, color=False)
+        # draw_graph_3d_ver2(self.g, x, y, z, save, color=False)
 
     @property
     def n_tree(self):

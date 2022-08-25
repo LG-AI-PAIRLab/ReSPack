@@ -25,6 +25,19 @@ class Recorder:
         self.n_terminals[seed][sample] = mean_terms
         self.gains[seed][sample] = gain
 
+    def logging_solution_file(self, n_tree, solution, sample_name):
+        sol_dir = self.dirs + '/solution'
+        os.makedirs(sol_dir, exist_ok=True)
+        path = sol_dir + '/' + sample_name + '.txt'
+        with open(path, 'w') as f:
+            # print path nodes for each tree
+            for i in range(1, n_tree + 1):
+                print(f"[STEINER TREE {i} BEGIN]", file=f)
+                edges, _ = solution[i]
+                out = "\n".join([f"{s} - {t}" for s, t in edges]) + "\n"
+                f.write(out)
+                print(f"[STEINER TREE {i} END]", file=f)
+
     def save_as_file(self):
         data = [ [sd, s, self.iterations[sd][s], self.solved[sd][s], self.gains[sd][s], self.duration[sd][s],
          self.scores[sd][s], self.duration_per_steiner_tree[sd][s], self.n_terminals[sd][s]]

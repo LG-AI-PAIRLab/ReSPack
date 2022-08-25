@@ -39,7 +39,7 @@ def extract_subgraph(X):
     find connected edge(x=1) and node sets from X
     :param X :
     """
-    ST = []
+    ST, idx = {}, 1
     for x in X:
         edges, nodes = [], []
         for i, j in x.keys():
@@ -47,5 +47,6 @@ def extract_subgraph(X):
                 edges.append((i, j))
                 nodes.append(i)
                 nodes.append(j)
-        ST.append((edges, list(set(nodes))))
+        ST[idx] = (edges, list(set(nodes)))
+        idx += 1
     return ST

@@ -83,7 +83,7 @@ class Heuristics(Algorithm):
         check spacing constraints and return flag and margin node set.
         Parameters
         -------------
-        prev_margins    : list of set.  
+        prev_margins    : dict of set.  
         new_nodes       : list of nodes
         n_space         : scalar.
 
@@ -95,7 +95,7 @@ class Heuristics(Algorithm):
         from functools import reduce
         violated = []
         # check if new path violates previous margin nodes
-        prev_all_margins = list(reduce(lambda x, y: x|y, prev_margins, set()))
+        prev_all_margins = list(reduce(lambda x, y: x|y, prev_margins.values(), set()))
         for nn in new_nodes:
             if nn in prev_all_margins:
                 violated.append(nn)
@@ -150,14 +150,14 @@ class Heuristics(Algorithm):
 
 
     def naive(self, order):
-        new_STs, congestion = [], False
-        prev_margins = []
+        new_STs, congestion = {}, False
+        prev_margins = {}
         for net_id in order:
             st_edges, st_nodes = self.STP_routing(net_id)
-            new_STs.append((st_edges, st_nodes))
+            new_STs[net_id] = (st_edges, st_nodes)
             is_violated, (_, new_margins) = self.is_violate_constraints(prev_margins, (st_edges, st_nodes), net_id)
             is_shared = self.update_p(st_nodes, 1, "route") # only check congestion
-            prev_margins.append(new_margins)
+            prev_margins[net_id] = new_margins
             if is_shared or (not st_nodes) or is_violated:
                 congestion = True
                 break
@@ -202,16 +202,16 @@ class Heuristics(Algorithm):
 
         Returns
         ----------
-        new_STs : list of tuples which are (st_edges, st_nodes).
+        new_STs : dictionary of tuples which are (st_edges, st_nodes).
         congestion : Boolean. It means occurence of congestion.
         """
-        new_STs, traces, congestion = [], set(), False
-        prev_margins = []
+        new_STs, traces, congestion = {}, set(), False
+        prev_margins = {}
         for net_id in order:
             st_edges, st_nodes = self.STP_routing(net_id)
             is_violated, (_, new_margins) = self.is_violate_constraints(prev_margins, (st_edges, st_nodes), net_id)
-            new_STs.append((st_edges, st_nodes))
-            prev_margins.append(new_margins)
+            new_STs[net_id] = (st_edges, st_nodes)
+            prev_margins[net_id] = new_margins
             is_shared = self.update_p(st_nodes, 1, "route") # route (in STPP, trial=1)
             is_shared2 = self.update_p(new_margins, 1, "route", is_margin=True) # margin (in STPP, trial=1)
             if (not congestion) and (is_shared or is_shared2 or is_violated):
@@ -224,21 +224,22 @@ class Heuristics(Algorithm):
             if self.verbose:
                 print("iter {} : rip-up and retry".format(trial))
             congestion = False
-            prev_STs, new_STs = new_STs, []
-            prev_MGs, new_MGs = new_MGs, []
-            for prev_st, net_id, prev_mg in zip(prev_STs, order, prev_MGs):
+            prev_STs, new_STs = new_STs, {}
+            prev_MGs, new_MGs = new_MGs, {}
+            for net_id in order:
+                prev_st, prev_mg = prev_STs[net_id], prev_MGs[net_id]
                 _, prev_nodes = prev_st
                 # rip-up previous route & margin
                 self.update_p(prev_nodes, trial, "ripup")  # route
                 self.update_p(prev_mg, trial, "ripup", is_margin=True)  # margin
                 self.update_c(list(set(prev_nodes) | set(prev_mg)))
                 new_st = self.STP_routing(net_id)
-                new_STs.append(new_st)
+                new_STs[net_id] = new_st
                 is_violated, (_, new_mg) = self.is_violate_constraints(new_MGs, new_st, net_id)
                 _, new_nodes = new_st
                 is_shared = self.update_p(new_nodes, trial + 1, "route")   # route
                 is_shared2 = self.update_p(new_mg, trial + 1, "route", is_margin=True)  # margin
-                new_MGs.append(new_mg)
+                new_MGs[net_id] = new_mg
                 if (not congestion) and (is_shared or is_shared2 or is_violated):
                     congestion = True
                 if self.rrr == "pathfinder":

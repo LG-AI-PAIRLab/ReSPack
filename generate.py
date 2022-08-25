@@ -8,7 +8,7 @@ from stppgen.utils.distribution import Multinomial, Poisson
 if __name__ == "__main__":
     parser = ArgumentParser('Argument for dataset generation.')
     parser.add_argument('--dest', type=str, default='respack', help='destination to save datasets.')
-    parser.add_argument('--config_root', type=str, default='dataset_config', help='root directory of config files.')
+    parser.add_argument('--config_root', type=str, default='dataset_configs', help='root directory of config files.')
     parser.add_argument('--name', type=str, default='UC', help='directory name containing target config files.')
     parser.add_argument('--init_base_dir', type=str, default=None, help='directory name containing base datasets which shares NWA with.')
     parser.add_argument('--n_samples', type=int, default=100, help='total number of samples to generate.')
@@ -37,7 +37,7 @@ if __name__ == "__main__":
         else:
             raise NotImplementedError
         
-        save_plot = True
+        save_plot = False
         target_dir = f"{args.dest}/{config['description']}_{config['dim'][-1]}/"
         
         init_base_dir = args.init_base_dir

@@ -30,42 +30,46 @@ pip install -r requirements.txt
 
 ### Example: Generate single instance
 ```
-from steiner import GridSTP2opt, GridSTPfast
-stp1 = GridSTP2opt(dim=[10, 10], max_ntrees=2, max_nterminals=[5, 5])
+from stppgen.stpsolution import GridSTP2opt, GridSTPfast
+stp1 = GridSTP2opt(dim=[2, 10, 10], max_ntrees=2, max_nterminals=[5, 5])
 stp1.generate()
+stp1.save_problem_txt('sample1_prob.txt')
+stp1.save_solution_txt('sample1_sol.txt')
 stp1.draw_graph(5, 5, save='sample1.png')
 
-stp2 = GridSTPfast(dim=[10, 10], max_ntrees=2, max_nterminals=[5, 5])
+stp2 = GridSTPfast(dim=[2, 10, 10], max_ntrees=2, max_nterminals=[5, 5])
 stp2.generate()
+stp1.save_problem_txt('sample1_prob.txt')
+stp1.save_solution_txt('sample1_sol.txt')
 stp2.draw_graph(5, 5, save='sample2.png')
 ```
 
 
 ### Example: Generate multiple instances with multiprocessing
 ```
-from distribution import Multinomial
-from steiner import DataGenerator
+from stppgen.utils.distribution import Multinomial, Poisson
+from stppgen.generator import DataGenerator
 dist1 = Multinomial(vmin=3, vmax=10)
-dist2 = Multinomial(vmin=5, vmax=10)
-gen = DataGenerator(n=10, method='fast', dim=[10, 10],
+dist2 = Poisson(mu=2)
+gen = DataGenerator(n=10, method='fast', dim=[1, 10, 10],
                     ntrees=dist1, nterminals=dist2,
                     save_to_dir='samples/', save_plot=True, overwrite=True)
-gen.run(ncores=2)
+gen.run(ncores=4)
 ```
 
 ### Example: read generated data
 ```
-from graphio import (read_problem_from_file, read_solution_from_file,
-draw_graph)
+from stppgen.utils.graphio import (read_problem_from_file, read_solution_from_file, 
+draw_graph_3d)
 
 i = 1
-path_prob = f"datasets/dataset5/problems/p_{i}.txt"
-path_sol = f"datasets/dataset5/solutions/s_{i}.txt"
+path_prob = f"samples/problems/p_{i}.txt"
+path_sol = f"samples/solutions/s_{i}.txt"
 
 g = read_problem_from_file(path_prob)
 g_sol = read_solution_from_file(g, path_sol)
 
-draw_graph(g_sol, 2, 10, 10, save=f'test.png')
+draw_graph_3d(g_sol, 10, 10, 1, save=f'test.png')
 ```
 
 
