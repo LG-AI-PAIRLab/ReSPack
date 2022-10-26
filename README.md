@@ -1,4 +1,4 @@
-# ReSPack: A Large-Scale Rectilinear Steiner Tree Packing Benchmark for Wire Routing
+# ReSPack: A Large-Scale Rectilinear Steiner Tree Packing Data Generator and Benchmark
 
 <table style="text-align:center; margin:auto;">
   <tr>
@@ -13,11 +13,14 @@
   </tr>
 </table>
 
+Combinatorial optimization (CO) has been studied as a useful tool for modeling industrial problems, but it still remains a challenge in complex domains because of the NP-hardness.
+With recent advances in machine learning, the field of CO is shifting to the study of neural combinatorial optimization using a large amount of data, showing promising results in some CO problems.
+Rectilinear Steiner tree packing problem (RSTPP) is a well-known CO problem and is widely used in modeling wiring problem among components in a printed circuit board and an integrated circuit design.
+Despite the importance of its application, the lack of available data has restricted to fully leverage machine learning approaches.
+In this paper, we present ReSPack, a large-scale synthetic RSTPP data generator and a benchmark.
+ReSPack includes a source code for generating RSTPP instances of various types with different sizes, test instances generated for the benchmark evaluation, and implementations of several baseline algorithms.
 
-Combinatorial optimization (CO) has been studied as a useful tool for modeling industrial problems, but it still remains a challenge in complex domains because of the NP-hardness. With recent advances in machine learning, the field of CO is shifting to the study of neural combinatorial optimization using a large amount of data, showing promising results in some CO problems. Rectilinear Steiner Tree Packing Problem (RSTPP) is a well-known CO problem and is widely used in modeling wiring problem among components in a printed circuit board and an integrated circuit design. Despite the importance for a design automation, the lack of availab le data has restricted to fully leverage machine learning approaches. In this paper, we present ReSPack, a large-scale synthetic RSTPP dataset and a benchmark for wire routing. ReSPack includes a source code for generating RSTPP problems of various types with different sizes, data instances generated for the benchmark testing, and implementations of several baseline algorithms. We believe that ReSPack can contribute to solving circuit design problems as well as the development of CO with machine learning.
-
-<!-- Please refer to the accompanying [paper](https://openreview.net/pdf?id=P14FNX0iotO). -->
-You can download ReSPack dataset [here](https://drive.google.com/file/d/1YpnWb5fZHBoQ27fsyY6ZVGPIh484hbnp/view?usp=sharing).
+You can download ReSPack dataset [here](http://dx.doi.org/10.17605/OSF.IO/BJ9R3).
 
 -------------
 
