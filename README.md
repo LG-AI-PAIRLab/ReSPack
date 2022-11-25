@@ -1,5 +1,21 @@
 # ReSPack: A Large-Scale Rectilinear Steiner Tree Packing Data Generator and Benchmark
+This repository contains the codebase of the paper  
+[ReSPack: A Large-Scale Rectilinear Steiner Tree Packing Data Generator and Benchmark](https://openreview.net/forum?id=TpYf4EumAi)  
+by Kanghoon Lee*, Youngjoon Park*, Han-Seul Jeong*, Sunghoon Hong, Deunsol Yoon, Sungryull Sohn, Minu Kim, Hanbum Ko, Moontae Lee, Honglak Lee, Kyunghoon Kim, Euihyuk Kim, Seonggeon Cho, Jaesang Min, Woohyung Lim
 
+Cite:
+```latex
+@inproceedings{
+lee2022respack,
+title={Re{SP}ack: A Large-Scale Rectilinear Steiner Tree Packing Data Generator and Benchmark},
+author={Kanghoon Lee and Youngjoon Park and Han-Seul Jeong and Deunsol Yoon and Sunghoon Hong and Sungryull Sohn and Minu Kim and Hanbum Ko and Moontae Lee and Honglak Lee and Kyunghoon Kim and Euihyuk Kim and Seonggeon Cho and Jaesang Min and Woohyung Lim},
+booktitle={NeurIPS 2022 Workshop on Synthetic Data for Empowering ML Research},
+year={2022},
+url={https://openreview.net/forum?id=TpYf4EumAi}
+}
+```
+
+# Summary
 <table style="text-align:center; margin:auto;">
   <tr>
     <th style="text-align:center; margin:auto;">Real PCB</th>
